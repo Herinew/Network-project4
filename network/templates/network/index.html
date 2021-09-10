@@ -1,0 +1,67 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    <h2 class="mx-3" id="title_head"></h2>
+    
+    <div id="post_form">
+        <form action="{% url 'new_post' %}" method="POST">
+            {% csrf_token %}
+            <div class="card m-3">
+                <div class="mx-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">New Post</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" name="text" placeholder="what's going on?" required></textarea>
+                </div>
+                <div class="mb-3 mx-3">
+                    <button type="submit" class="btn btn-primary btn-sm">Post</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="edit_form">
+        <form>
+            <div class="card m-3">
+                <div class="mx-3">
+                    <label for="exampleFormControlTextarea2" class="form-label">Edit Post</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea2" rows="2"></textarea>
+                </div>
+                <div class="mb-3 mx-3">
+                    <button type="button" class="btn btn-primary btn-sm" id="save_button">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="profile-view">
+        <div class="card m-3">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col">
+                        Following
+                        <div id="following-count"></div>
+                    </div>
+                    <div class="col">
+                        followers
+                        <div id="followers-count"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-body">
+                <button type="button" class="btn btn-outline-primary btn-sm" id="follow-button"></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="posts"></div>
+
+    <hr class="m-3">
+
+    <div class="pages">
+            <ul class="pagination justify-content-center" id="pagination_ul">
+              <li class="page-item" id="item_Previous"><a class="page-link" href="#" id="link_Previous">Previous</a></li>
+              <li class="page-item" id="item_current"><a class="page-link" href="#" id="link_current">1</a></li>
+              <li class="page-item" id="item_next"><a class="page-link" href="#" id="link_next">Next</a></li>
+            </ul>
+    </div>
+{% endblock %}
